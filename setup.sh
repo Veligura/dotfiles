@@ -219,6 +219,8 @@ if [[ "$(whoami)" == "root" ]]; then
     systemctl_enable_start "system" "reverse-ssh@devbox.service"
   fi
 
+   # You may also want to mask the systemd-fsck-root.service, or tell it not to fsck the root filesystem from the kernel command line using fsck.mode=skip. Without mkinitcpio's fsck hook, systemd will still fsck any relevant filesystems with the systemd-fsck@.service
+
   echo ""
   echo "==============================="
   echo "Creating top level Trash dir..."
