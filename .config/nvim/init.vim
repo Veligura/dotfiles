@@ -21,8 +21,8 @@ call dein#add('haya14busa/dein-command.vim')
 call dein#add('morhetz/gruvbox')                                      " Color theme
 call dein#add('itchyny/lightline.vim')                                " Bottom bar
 call dein#add('mgee/lightline-bufferline')                            " Top bar
-call dein#add('maximbaz/lightline-trailing-whitespace')               " Trailing whitespace indicator
-call dein#add('maximbaz/lightline-ale')                               " ALE indicator
+call dein#add('alex/lightline-trailing-whitespace')               " Trailing whitespace indicator
+call dein#add('alex/lightline-ale')                               " ALE indicator
 call dein#add('gcavallanti/vim-noscrollbar')                          " Scrollbar for statusline
 call dein#add('cskeeters/vim-smooth-scroll')                          " Smooth scroll
 call dein#add('moll/vim-bbye')                                        " Keep window when closing a buffer

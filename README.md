@@ -87,7 +87,7 @@
 ## Installation:
 
 ```
-$ git clone https://github.com/maximbaz/dotfiles.git ~/.dotfiles
+$ git clone https://github.com/alex/dotfiles.git ~/.dotfiles
 $ ~/.dotfiles/setup.sh
 ```
 

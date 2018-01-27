@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SOURCE="/home/maximbaz/Dropbox /home/maximbaz/private /home/maximbaz/.dotfiles /home/maximbaz/.go/src/go-private /home/maximbaz/.ssh"
-BACKUP_PATH="/run/media/maximbaz/Transcend/maximbaz"
+SOURCE="/home/alex/Dropbox /home/alex/private /home/alex/.dotfiles /home/alex/.go/src/go-private /home/alex/.ssh"
+BACKUP_PATH="/run/media/alex/Transcend/alex"
 BACKUP_DIR="$BACKUP_PATH/$(date +%Y-%m-%d)"
 
 if [ ! -d $BACKUP_PATH ]; then

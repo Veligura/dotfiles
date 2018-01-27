@@ -3,7 +3,6 @@ source ~/.zsh/sandboxd.zsh
 
 # Load environment variables
 source ~/.zsh/environment.zsh
-source ~/.dircolors.zsh
 
 # Load plugins
 source ~/.zsh/antigen.zsh

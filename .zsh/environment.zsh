@@ -50,7 +50,7 @@ sandbox_hook rvm rvm
 sandbox_hook rvm eyaml
 
 # Go configuration
-export GOPATH=/home/maximbaz/.go
+export GOPATH=/home/alex/.go
 export PATH="$GOPATH/bin:$PATH"
 
 # NPM configuration

@@ -92,7 +92,7 @@ if [ "$(whoami)" != "root" ]; then
     link ".i3/config"
     link ".i3status.conf"
 
-    link ".gnupg/gpg-agent.conf"
+
 
     link ".config/alacritty/alacritty.yml"
     link ".config/Cerebro/config.json"

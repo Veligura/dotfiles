@@ -185,7 +185,7 @@
    ```
 3. Clone dotfiles:
    ```
-   $ git clone https://github.com/maximbaz/dotfiles.git ~/.dotfiles
+   $ git clone https://github.com/alex/dotfiles.git ~/.dotfiles
    ```
 4. Bootstrap pacman packages:
    ```
