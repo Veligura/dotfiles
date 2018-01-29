@@ -91,9 +91,6 @@ if [ "$(whoami)" != "root" ]; then
   if [[ "$HOST" =~ "desktop-" ]]; then
     link ".i3/config"
     link ".i3status.conf"
-
-
-
     link ".config/alacritty/alacritty.yml"
     link ".config/Cerebro/config.json"
     link ".config/chromium-flags.conf"
@@ -135,7 +132,6 @@ if [ "$(whoami)" != "root" ]; then
     systemctl_enable_start "user" "tmux.service"
     systemctl_enable_start "user" "redshift.service"
     systemctl_enable_start "user" "urlwatch.timer"
-    systemctl_enable_start "user" "yubikey-touch-detector.service"
   fi
 
   echo ""
@@ -150,26 +146,9 @@ if [ "$(whoami)" != "root" ]; then
   fi
 
   if [[ "$HOST" =~ "desktop-" ]]; then
-    if [[ ! -a "$HOME/.config/Yubico/u2f_keys" ]]; then
-      echo "Configuring YubiKey for sudo access (touch it now)"
-      mkdir -p "$HOME/.config/Yubico"
-      pamu2fcfg -umaximbaz > "$HOME/.config/Yubico/u2f_keys"
-    fi
-
-    if [[ -a "$HOME/.password-store" ]]; then
-      echo "Configuring automatic git push for pass"
-      echo "#!/usr/bin/env bash\n\npass git push" >! "$HOME/.password-store/.git/hooks/post-commit"
-      chmod +x "$HOME/.password-store/.git/hooks/post-commit"
-    fi
-
-    echo "Disabling Dropbox autoupdate"
-    rm -rf ~/.dropbox-dist
-    install -dm0 ~/.dropbox-dist
-
     echo "Ignoring further changes to often changing config"
     git update-index --assume-unchanged ".config/TheHive/HotShots.conf"
     git update-index --assume-unchanged ".config/transmission/settings.json"
-    git update-index --assume-unchanged ".config/Cerebro/config.json"
   fi
 
   echo ""
@@ -196,8 +175,6 @@ if [[ "$(whoami)" == "root" ]]; then
   copy "etc/sysctl.d/99-sysctl.conf"
   copy "etc/systemd/system/paccache.service"
   copy "etc/systemd/system/paccache.timer"
-  copy "etc/systemd/system/reflector.service"
-  copy "etc/systemd/system/reflector.timer"
   copy "etc/updatedb.conf"
 
   if [[ "$HOST" =~ "desktop-" ]]; then
@@ -207,11 +184,6 @@ if [[ "$(whoami)" == "root" ]]; then
     copy "etc/udev/rules.d/81-ac-battery-change.rules"
     copy "etc/X11/xorg.conf.d/00-keyboard.conf"
     copy "etc/X11/xorg.conf.d/30-touchpad.conf"
-  fi
-
-  if [[ "$HOST" =~ "crmdevvm-" ]]; then
-    copy "etc/systemd/system/reverse-ssh@devbox"
-    copy "etc/systemd/system/reverse-ssh@.service"
   fi
 
   echo ""
@@ -230,8 +202,6 @@ if [[ "$(whoami)" == "root" ]]; then
   systemctl_enable_start "system" "ufw.service"
   systemctl_enable_start "system" "snapper-cleanup.timer"
 
-  if [[ "$HOST" =~ "desktop-" ]]; then
-    systemctl_enable_start "system" "dropbox@maximbaz.service"
     systemctl_enable_start "system" "pcscd.service"
 
     # tlp
@@ -239,21 +209,7 @@ if [[ "$(whoami)" == "root" ]]; then
     systemctl_enable_start "system" "tlp-sleep.service"
     systemctl_enable_start "system" "NetworkManager-dispatcher.service"
     systemctl mask "systemd-rfkill.service"
-  fi
-
-  if [[ "$HOST" =~ "crmdevvm-" ]]; then
-    systemctl_enable_start "system" "sshd.socket"
-    systemctl_enable_start "system" "reverse-ssh@devbox.service"
-  fi
-
-  echo ""
-  echo "==============================="
-  echo "Creating top level Trash dir..."
-  echo "==============================="
-  mkdir --parent /.Trash
-  chmod a+rw /.Trash
-  chmod +t /.Trash
-  echo "Done"
+  
 
   echo ""
   echo "======================================="
