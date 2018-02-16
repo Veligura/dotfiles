@@ -19,6 +19,8 @@ WINDOW_ICONS = {
     'xfreerdp': '󰀄',
     'teamviewer': '󰀄',
     'jetbrains-idea': '󰀟',
+
+    'jetbrains-webstorm-eap': '󰀟',
 }
 
 DEFAULT_ICON = '󰀏'

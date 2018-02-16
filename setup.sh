@@ -139,11 +139,6 @@ if [ "$(whoami)" != "root" ]; then
   echo "Finishing various user configuration..."
   echo "======================================="
 
-  if ! gpg -k | grep 12C87A28FEAC6B20 > /dev/null; then
-    echo "Importing my public PGP key"
-    curl -s https://keybase.io/maximbaz/pgp_keys.asc| gpg --import
-    gpg --trusted-key 12C87A28FEAC6B20 > /dev/null
-  fi
 
   if [[ "$HOST" =~ "desktop-" ]]; then
     echo "Ignoring further changes to often changing config"
@@ -167,9 +162,7 @@ if [[ "$(whoami)" == "root" ]]; then
   echo "Setting up /etc configs..."
   echo "=========================="
 
-  copy "etc/conf.d/snapper"
-  copy "etc/snapper/configs/root"
-  copy "etc/ssh/ssh_config"
+
   copy "etc/sysctl.d/10-swappiness.conf"
   copy "etc/sysctl.d/99-idea.conf"
   copy "etc/sysctl.d/99-sysctl.conf"
@@ -178,9 +171,6 @@ if [[ "$(whoami)" == "root" ]]; then
   copy "etc/updatedb.conf"
 
   if [[ "$HOST" =~ "desktop-" ]]; then
-    copy "etc/NetworkManager/dispatcher.d/pia-vpn"
-    copy "etc/private-internet-access/pia.conf"
-    copy "etc/systemd/system/getty@tty1.service.d/override.conf"
     copy "etc/udev/rules.d/81-ac-battery-change.rules"
     copy "etc/X11/xorg.conf.d/00-keyboard.conf"
     copy "etc/X11/xorg.conf.d/30-touchpad.conf"
@@ -195,21 +185,16 @@ if [[ "$(whoami)" == "root" ]]; then
 
   systemctl daemon-reload
   systemctl_enable_start "system" "paccache.timer"
-  systemctl_enable_start "system" "reflector.timer"
-  systemctl_enable_start "system" "NetworkManager.service"
-  systemctl_enable_start "system" "NetworkManager-wait-online.service"
   systemctl_enable_start "system" "docker.service"
   systemctl_enable_start "system" "ufw.service"
-  systemctl_enable_start "system" "snapper-cleanup.timer"
 
     systemctl_enable_start "system" "pcscd.service"
 
     # tlp
     systemctl_enable_start "system" "tlp.service"
     systemctl_enable_start "system" "tlp-sleep.service"
-    systemctl_enable_start "system" "NetworkManager-dispatcher.service"
     systemctl mask "systemd-rfkill.service"
-  
+
 
   echo ""
   echo "======================================="
@@ -235,27 +220,17 @@ if [[ "$(whoami)" == "root" ]]; then
   find /etc/ufw -type f -name '*.rules.*' -delete
 
   if [[ "$HOST" =~ "desktop-" ]]; then
-    echo "Allowing to use U2F for sudo access"
-    sed -zi "s|\(#%PAM-1.0\)\n\(auth    sufficient    pam_u2f.so    cue\n\)\?|\1\nauth    sufficient    pam_u2f.so    cue\n|" /etc/pam.d/sudo
 
     echo "Disable caching sudo access"
     sed -zi "s|\(## Defaults specification\n[^\n]*\n[^\n]*\n[^\n]*\n\)\(\nDefaults timestamp_timeout=0\n\n\)\?|\1\nDefaults timestamp_timeout=0\n\n|" /etc/sudoers
 
-    echo "Allowing regular user to restart pcscd.service (to fix YubiKey after a suspend)"
-    sed -zi "s|\(%wheel ALL=(ALL) ALL\)\n[^\n]*|\1\n%wheel ALL=(ALL) NOPASSWD:SETENV: /usr/bin/systemctl stop pcscd.service|" /etc/sudoers
 
-    echo "Configuring login manager"
-    sed -i "s/#\?\(HandleLidSwitch\)=.*/\1=ignore/" /etc/systemd/logind.conf
-    sed -i "s/#\?\(HandlePowerKey\)=.*/\1=ignore/" /etc/systemd/logind.conf
 
     echo "Enabling infinality aliases"
     ln -sf /etc/fonts/conf.avail/30-infinality-aliases.conf /etc/fonts/conf.d/30-infinality-aliases.conf
   fi
 
-  if [[ "$HOST" =~ "crmdevvm-" ]]; then
-    echo "Configuring gpg-agent forwarding"
-    sed -zi "s/\(VersionAddendum[^\n]*\n\)\(StreamLocalBindUnlink[^\n]*\n\)\?/\1StreamLocalBindUnlink yes\n/" /etc/ssh/sshd_config
-  fi
+
 
   echo "Reload udev rules"
   udevadm control --reload

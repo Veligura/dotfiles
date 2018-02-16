@@ -41,23 +41,20 @@ source ~/.zsh/environment.zsh
 # Initial configuration and autostart some apps
 
 xrandr --dpi 100                                           # Set High DPI
-xcalib ~/.dotfiles/dell_xps15.icm                          # Calibrate screen
 hsetroot -solid "#333333"                                  # Set desktop color
 compton &                                                  # Enable composition
 start-pulseaudio-x11 &                                     # Pulse audio daemon
 xset s off -dpms                                           # Prevent screen from turning off
-xset r rate 250 45                                         # Set keyboard repeat rate
+xset r rate 660 25
 xset m 3/1 4                                               # Set mouse cursor speed
 
 numlockx &                                                 # Turn on NumLock
 unclutter &                                                # Hide mouse when using keyboard
 
-cerebro --disable-gpu &                                    # Launcher
 copyq &                                                    # Clipboard manager
 hotshots &                                                 # Screenshot manager
 udiskie --smart-tray &                                     # Automatically mount usb drives
 thunderbird &                                              # Mail
-wire-desktop &                                             # Messaging
 ~/bin/server_notify.pl &                                   # libnotify over ssh
 
 exec i3                                                    # WM

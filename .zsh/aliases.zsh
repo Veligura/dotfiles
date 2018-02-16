@@ -11,18 +11,25 @@ alias makepkg-compress="PKGEXT='.pkg.tar.xz' makepkg"
 alias mkdir='mkdir -p'
 alias o='xdg-open'
 alias pacdiff='sudo \pacdiff; py3-cmd refresh "external_script pacdiff"'
-alias rm='rmtrash -rf'
 alias rsync='rsync --verbose --archive --info=progress2 --human-readable --compress --partial --append-verify'
 alias sudo='sudo -E '
 alias vi='nvim'
 alias vim='nvim'
 
+alias m2='xrandr --output  eDP1 --auto --output DP1 --auto --above eDP1 --output DP2 --auto --right-of DP1'
+alias m2hdmi='xrandr --output  eDP1 --auto --output HDMI1 --auto --left-of eDP1'
+alias m1='xrandr --output DP1 --off --output DP2 --off --output HDMI1 --off'
+
+alias m1HDMI='xrandr --output HDMI1 --off'
 alias ls="exa --git --group-directories-first"
 alias ll="ls -l"
 alias la="ll -a"
 alias lk="ll -s=size"                # Sorted by size
 alias lm="ll -s=modified"            # Sorted by modified date
 alias lc="ll --created -s=created"   # Sorted by created date
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 function mkdcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
