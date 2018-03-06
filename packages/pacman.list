@@ -4,10 +4,12 @@ acpid
 alsa-firmware
 alsa-plugins
 alsa-utils
+android-file-transfer
 arandr
 aria2
 artwork-i3
 atom
+audacious
 avahi
 b43-fwcutter
 blueman
@@ -16,6 +18,7 @@ btrfs-progs
 calibre
 ccid
 clipit
+cmus
 cower
 cpupower
 crda
@@ -74,6 +77,7 @@ hexchat
 htop
 httpie
 inotify-tools
+intellij-idea-community-edition
 intel-ucode
 inxi
 iptables
@@ -92,6 +96,7 @@ libusb-compat
 libva-intel-driver
 libva-mesa-driver
 libvdpau-va-gl
+light
 lightdm-settings
 lightdm-slick-greeter
 linux414
@@ -248,3 +253,4 @@ youtube-dl
 zd1211-firmware
 zip
 zsh
+zsnes

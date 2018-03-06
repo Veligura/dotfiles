@@ -7,6 +7,7 @@ fi
 
 # Restore last brightness value for battery or AC
 if [[ "$1" == "bat" || "$1" == "ac" ]]; then
+
   light -S $(< /home/alex/.brightness_$1)
   py3-cmd refresh backlight
   exit 0
@@ -20,8 +21,18 @@ else
 fi
 
 # Save brightness value to a file
-printf -v new %.0f $(light)
-battery_status=$(acpi | grep -Po '(?<=: )\w+')
+
+new=$(light)
+
+battery_statuses=$(acpi | grep -Po '(?<=: )\w+' | tr "\n" "\n")
+
+for stat in $battery_statuses;
+do
+   if [[ "$stat" == "Charging" || "$stat" == "Discharging" ]]; then
+    battery_status=$stat
+  fi
+done
+
 if [[ "$battery_status" == "Discharging" ]]; then
   power="bat"
 else

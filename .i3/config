@@ -1,8 +1,5 @@
 # Set font
 font pango: Taskbar, Cantarell 12
-exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle
-
-
 # Gaps
 gaps inner 20
 smart_gaps on
@@ -21,10 +18,10 @@ for_window    [class="Google-chrome"]        move container to $workspace2, titl
 for_window    [class="Chromium"]             move container to $workspace2, title_format "Chromium"
 for_window    [class="Wire"]                 move container to $workspace3
 for_window    [class="Slack"]                move container to $workspace5
+for_window    [class="TelegramDesktop"]                move container to $workspace5
 for_window    [class="skypeforlinux"]                move container to $workspace5
 for_window    [class="telegram-desktop"]                move container to $workspace5
 for_window    [class="Thunderbird"]          move container to $workspace4
-for_window    [instance="TeamViewer.exe"]    move container to $workspace9, floating enable
 for_window    [class="xfreerdp"]             move container to $workspace9
 
 # Color scheme (Gruvbox dark)
@@ -304,4 +301,7 @@ mode "$mode_workspaces_monitors" {
   bindsym Escape mode "default"
 }
 bindcode $mod+Shift+58 mode $mode_workspaces_monitors
+
+exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
+exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle"
 

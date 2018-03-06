@@ -18,9 +18,10 @@ WINDOW_ICONS = {
     'mpv': '',
     'xfreerdp': '󰀄',
     'teamviewer': '󰀄',
-    'jetbrains-idea': '󰀟',
-
+    'jetbrains-idea': '󰀟', 
+    'jetbrains-idea-ce': '󰀟',
     'jetbrains-webstorm-eap': '󰀟',
+    'jetbrains-webstorm': '󰀟',
 }
 
 DEFAULT_ICON = '󰀏'
