@@ -1,6 +1,7 @@
 # Lazy-loading functionality
 source ~/.zsh/sandboxd.zsh
-
+autoload -Uz compinit
+compinit
 # Load environment variables
 source ~/.zsh/environment.zsh
 
@@ -23,3 +24,7 @@ elif [[ "$HOST" =~ "crmdevvm-" ]]; then
 fi
 
 
+# The following lines were added by compinstall
+
+
+# End of lines added by compinstall

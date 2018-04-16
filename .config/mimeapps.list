@@ -1,2 +1,3 @@
 [Default Applications]
 application/pdf=chromium.desktop
+application/png=chromium.desktop

@@ -56,7 +56,7 @@ bar {
   }
 
   separator_symbol "  |  "
-  status_command py3status --dbus-notify
+  status_command py3status --dbus-notify 
   position top
   tray_output none
 }
@@ -302,6 +302,4 @@ mode "$mode_workspaces_monitors" {
 }
 bindcode $mod+Shift+58 mode $mode_workspaces_monitors
 
-exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
-exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle"
-
+exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle -option ctrl:swapcaps"
