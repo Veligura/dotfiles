@@ -29,8 +29,9 @@ export M3_HOME="/usr/share/maven3"
 export PATH="$M3_HOME/bin:$PATH"
 
 # Android configuration
-export ANDROID_SDK_ROOT="$HOME/.android/sdk"
+export ANDROID_SDK_ROOT="$HOME/Android/sdk"
 
+export ANDROID_HOME="$HOME/Android/Sdk"
 # Haskell configuration
 export PATH="$HOME/.cabal/bin:$PATH"
 

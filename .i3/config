@@ -1,7 +1,7 @@
 # Set font
 font pango: Taskbar, Cantarell 12
 # Gaps
-gaps inner 20
+gaps inner 5
 smart_gaps on
 
 # Borders
@@ -23,6 +23,7 @@ for_window    [class="skypeforlinux"]                move container to $workspac
 for_window    [class="telegram-desktop"]                move container to $workspace5
 for_window    [class="Thunderbird"]          move container to $workspace4
 for_window    [class="xfreerdp"]             move container to $workspace9
+# for_window    [class="Rofi"]                 floating enable
 
 # Color scheme (Gruvbox dark)
 set $color_normal_white  #a89984
@@ -75,7 +76,7 @@ floating_modifier $mod
 bindcode Mod1+50 exec "py3-cmd refresh keyboard_layout"
 
 # Start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty 
 
 # Kill focused window (q)
 bindcode $mod+Shift+24 kill
@@ -220,15 +221,21 @@ bindsym Mod1+Tab \
   -bg        "#222222"  -fg        "#2ECC71" \
   -hlbg      "#2ECC71"  -hlfg      "#222222" \
   -bg-active "#222222"  -fg-active "#2288DD" \
-  -font      "Roboto Slab 14"   -opactiy 80
+  -font      "Roboto Slab 12"   -opactiy 80
 
 bindcode $mod+40 exec rofi \
-    -show run -terminal urxvtc -hide-scrollbar true  \
+    -show drun -terminal urxvtc -hide-scrollbar true  \
     -line-margin 0 -lines 10 -eh 2 -width 40 -bw 3 \
     -bg        "#222222"  -fg        "#2ECC71" \
     -hlbg      "#2ECC71"  -hlfg      "#222222" \
     -bg-active "#222222"  -fg-active "#2288DD" \
-    -font      "Roboto Slab 14"   -opactiy 80
+    -font      "Roboto Slab 12"   -opactiy 80
+
+
+# bindcode $mod+21 exec "pgrep -x rofi && killall rofi || rofi -normal-window -show calc"
+# bindcode $mod+40 exec "pgrep -x rofi && killall rofi || rofi -normal-window -show drun"
+# bindcode $mod+32 exec "pgrep -x rofi && killall rofi || rofi -normal-window -show window"
+
 
 
 # Automatically rename workspaces
@@ -302,4 +309,4 @@ mode "$mode_workspaces_monitors" {
 }
 bindcode $mod+Shift+58 mode $mode_workspaces_monitors
 
-exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle -option ctrl:swapcaps"
+exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:win_space_toggle -option ctrl:nocaps"
