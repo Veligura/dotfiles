@@ -2,6 +2,8 @@
 source ~/.zsh/sandboxd.zsh
 autoload -Uz compinit
 compinit
+kitty + complete setup zsh | source /dev/stdin
+
 # Load environment variables
 source ~/.zsh/environment.zsh
 

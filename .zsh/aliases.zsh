@@ -20,14 +20,14 @@ alias m2='xrandr --output  eDP1 --auto --output DP1 --auto --above eDP1 --output
 alias m2hdmi='xrandr --output  eDP1 --auto --output HDMI1 --auto --left-of eDP1'
 alias m1='xrandr --output DP1 --off --output DP2 --off --output HDMI1 --off'
 
-alias m1HDMI='xrandr --output HDMI1 --off'
+alias m1HDMI='xrandr --output HDMI-1 --off'
 alias ls="exa --git --group-directories-first"
 alias ll="ls -l"
 alias la="ll -a"
 alias lk="ll -s=size"                # Sorted by size
 alias lm="ll -s=modified"            # Sorted by modified date
 alias lc="ll --created -s=created"   # Sorted by created date
-
+alias fixkey="setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:win_space_toggle -option ctrl:nocaps"
 function mkdcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
 }
