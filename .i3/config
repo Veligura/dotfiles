@@ -1,7 +1,7 @@
 # Set font
 font pango: Taskbar, Cantarell 12
 # Gaps
-gaps inner 5
+gaps inner 2
 smart_gaps on
 
 # Borders
@@ -12,6 +12,7 @@ hide_edge_borders both
 # Specific window configuration
 for_window    [window_role="pop-up"]         floating enable
 for_window    [class="Pinentry"]             floating enable
+for_window    [class="viber"]             floating enable
 for_window    [class="copyq"]                floating enable
 for_window    [class="Peek"]                 floating enable
 for_window    [class="Google-chrome"]        move container to $workspace2, title_format "Google Chrome"
@@ -127,7 +128,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+alt+space focus mode_toggle
 
 # Focus the parent container (a)
 bindcode $mod+38 focus parent

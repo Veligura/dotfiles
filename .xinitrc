@@ -50,10 +50,10 @@ xset m 3/1 4                                               # Set mouse cursor sp
 xset -b
 numlockx &                                                 # Turn on NumLock
 unclutter &                                                # Hide mouse when using keyboard
-
+redshift &
 copyq &                                                    # Clipboard manager
 hotshots &                                                 # Screenshot manager
 udiskie --smart-tray &                                     # Automatically mount usb drives
-thunderbird &                                              # Mail
 ~/bin/server_notify.pl &                                   # libnotify over ssh
+feh --bg-scale ~/walls/photo-1483030096298-4ca126b58199.jpeg &
 exec i3                                                    # WM

@@ -20,7 +20,7 @@ export PASSWORD_STORE_CHARACTER_SET='a-zA-Z0-9~!@#$%^&*()-_=+[]{};:,.<>?'
 export PASSWORD_STORE_GENERATED_LENGTH=40
 
 # Java configuration
-export JAVA_HOME="/usr/lib/jvm/java-8-jdk"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Maven configuration
