@@ -1,10 +1,9 @@
 android-sdk
-android-sdk-platform-tools
 android-studio
 android-studio-canary
 antigen-git
 bluez-hcitool
-chromium-vaapi-bin
+figma-bin
 flutter
 genymotion
 gtk-theme-arc-gruvbox-git
@@ -13,7 +12,6 @@ i3pystatus-git
 jdk8
 nvm
 otf-san-francisco
-py3status-git
 python2-neovim
 reactotron
 rofi-git
